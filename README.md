@@ -9,3 +9,5 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 3. After the run you will find "Tidy.txt" file in your working directory. This is an independent tidy data set with the average of each variable for activity and each subject.
 
 Other files:
+* CodeBook.md - contains variables and summaries calculated with this code, along with units, and  other relevant information.
+* ReproduceMe.Rmd - dynamic document which contains all the steps to reproduce run_analysis.R along with some of the outputs.
