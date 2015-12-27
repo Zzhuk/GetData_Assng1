@@ -1,7 +1,6 @@
 ---
-output: html_document
+output: word_document
 ---
-
 #Getting and cleaning data - Assingment #1
 ##by Zzhuk
 
