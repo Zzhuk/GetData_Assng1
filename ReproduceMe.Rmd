@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 
 #Getting and cleaning data - Assingment #1
 ##by Zzhuk
@@ -81,7 +84,7 @@ Appropriately labels the data set with descriptive variable names.
     names(Y)<-"Activity"
     
     CleanedData<-cbind(Subject, Y, X)
-    head(CleanedData[,c(1:4)])
+    head(CleanedData[,c(1:4)]) ## first 5 columns
 
 ```
 
@@ -97,7 +100,7 @@ TidyData <- CleanedData[, lapply(.SD, mean), by = 'SubjectID,Activity']
 dim(TidyData)
 write.table(TidyData, file = "Tidy.txt", row.names = FALSE)
 ```
-First 12 rows and 4 columns in Tidy dataset:
+First 12 rows and 5 columns in Tidy dataset:
 ```{r}
 head(TidyData[order(SubjectID)][,c(1:4), with = FALSE],12) 
 ```

@@ -140,7 +140,7 @@ head(Y)</code></pre>
     names(Y)&lt;-&quot;Activity&quot;
     
     CleanedData&lt;-cbind(Subject, Y, X)
-    head(CleanedData[,c(1:4)])</code></pre>
+    head(CleanedData[,c(1:4)]) ## first 5 columns</code></pre>
 <pre><code>##   SubjectID Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y
 ## 1         2 STANDING         0.2571778       -0.02328523
 ## 2         2 STANDING         0.2860267       -0.01316336
@@ -157,7 +157,7 @@ TidyData &lt;- CleanedData[, lapply(.SD, mean), by = 'SubjectID,Activity']
 dim(TidyData)</code></pre>
 <pre><code>## [1] 180  68</code></pre>
 <pre class="r"><code>write.table(TidyData, file = &quot;Tidy.txt&quot;, row.names = FALSE)</code></pre>
-<p>First 12 rows and 4 columns in Tidy dataset:</p>
+<p>First 12 rows and 5 columns in Tidy dataset:</p>
 <pre class="r"><code>head(TidyData[order(SubjectID)][,c(1:4), with = FALSE],12) </code></pre>
 <pre><code>##     SubjectID           Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y
 ##  1:         1           STANDING         0.2789176      -0.016137590
