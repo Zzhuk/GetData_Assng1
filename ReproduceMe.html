@@ -79,7 +79,7 @@ img {
 <h2>Part 1</h2>
 <p>Merges the training and the test sets to create one data set.</p>
 <pre class="r"><code>## considering zip file is downloaded and saved under working directory
-## unzip(&quot;getdata-projectfiles-UCI HAR Dataset.zip&quot;)
+unzip(&quot;getdata-projectfiles-UCI HAR Dataset.zip&quot;)
 
 ## test data:
 XTest&lt;- read.table(&quot;UCI HAR Dataset/test/X_test.txt&quot;)
@@ -110,18 +110,18 @@ Subject&lt;-rbind(SubjectTest, SubjectTrain)</code></pre>
 <div id="part-2" class="section level2">
 <h2>Part 2</h2>
 <p>Extracts only the measurements on the mean and standard deviation for each measurement.</p>
-<pre class="r"><code>index&lt;-grep(&quot;mean\\(\\)|std\\(\\)&quot;, features[,2])
-length(index) ## count of variables</code></pre>
+<pre class="r"><code>index&lt;-grep(&quot;mean\\(\\)|std\\(\\)&quot;, features[,2]) ##getting features indeces which contain mean() and std() in their name
+length(index) ## count of features</code></pre>
 <pre><code>## [1] 66</code></pre>
-<pre class="r"><code>X&lt;-X[,index] ## getting only variables iwth mean/stdev
+<pre class="r"><code>X&lt;-X[,index] ## getting only variables with mean/stdev
 dim(X) ## checking dim of subset </code></pre>
 <pre><code>## [1] 10299    66</code></pre>
 </div>
 <div id="part-3" class="section level2">
 <h2>Part 3</h2>
 <p>Uses descriptive activity names to name the activities in the data set</p>
-<pre class="r"><code>Y[,1]&lt;-activity[Y[,1],2] ## won't reorder Y set
-head(Y)</code></pre>
+<pre class="r"><code>Y[,1]&lt;-activity[Y[,1],2] ## replacing numeric values with lookup value from activity.txt; won't reorder Y set
+head(Y) </code></pre>
 <pre><code>##         V1
 ## 1 STANDING
 ## 2 STANDING
@@ -153,7 +153,7 @@ head(Y)</code></pre>
 <h2>Part 5</h2>
 <p>From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.</p>
 <pre class="r"><code>CleanedData&lt;-data.table(CleanedData)
-TidyData &lt;- CleanedData[, lapply(.SD, mean), by = 'SubjectID,Activity']
+TidyData &lt;- CleanedData[, lapply(.SD, mean), by = 'SubjectID,Activity'] ## features average by Subject and by activity
 dim(TidyData)</code></pre>
 <pre><code>## [1] 180  68</code></pre>
 <pre class="r"><code>write.table(TidyData, file = &quot;Tidy.txt&quot;, row.names = FALSE)</code></pre>
